@@ -1,0 +1,118 @@
+/* 表にカーソルを合わせた際の処理 */
+td:hover{
+    /* カーソルを指にする */
+    cursor: pointer;
+}
+
+table th,
+table td {
+  /* 枠線: 太さ 実線 色 */
+  border: 1px solid rgb(0, 0, 0);
+}
+
+table{
+  /* 表示:同じ行に表示 */
+  display:inline;
+  /* 枠線を重ねて表示 */
+  border-collapse: collapse;
+}
+
+#back,#next{
+  /* 位置指定 */
+  position: relative;
+  top:736px;
+}
+
+
+
+#t{
+  /* 位置指定 */
+  position: relative;
+  top:50px;
+  width: 1000%;
+}
+h3{
+  /* 表示:別の行に表示 */
+  display: block;
+  /* 位置指定 */
+  position: relative;
+  left:-20px;
+  /* 文字の大きさ */
+  font-size: medium;
+}
+div{
+  /* 表示: */
+  display: inline-block;
+  margin-right: 25px;
+}
+p{
+  display: inline;
+  position: relative;
+  top:535px;
+  left:-30px;
+}
+
+#date {
+  position:relative;
+  transform: translate(-35px,50px);
+  display: inline-block;
+  width: 220px; /* 幅を設定 */
+  height: auto; /* 自動で高さを調整 */
+  margin-bottom: 10px; /* マージンを追加 */
+}
+
+#targetdate {
+  width: 100%; /* 幅を100%に設定 */
+  height: 36px; /* 高さを設定 */
+  border: 2px solid #ccc; /* ボーダーを設定 */
+  border-radius: 15px; /* 角丸を設定 */
+  padding: 5px; /* 内側の余白を設定 */
+  box-sizing: border-box; /* ボックスサイズを設定 */
+  background: linear-gradient(135deg, #ffcccc, #ffe6cc); /* グラデーションの背景色 */
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1em; /* フォントサイズ */
+  color: #333; /* フォントカラー */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* シャドウ効果 */
+  transition: all 0.3s ease; /* トランジション効果 */
+}
+
+#targetdate:focus {
+  border-color: #ff6666; /* フォーカス時のボーダーカラー */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* フォーカス時のシャドウ効果 */
+  outline: none; /* デフォルトのフォーカスリングを削除 */
+  background: linear-gradient(135deg, #ffe6cc, #ffcccc); /* フォーカス時の背景グラデーション */
+}
+
+label {
+  display: inline-block;
+  width: 100%; /* 幅を100%に設定 */
+  margin-bottom: 10px; /* マージンを追加 */
+}
+
+#calendar-icon {
+      position: absolute; /* 絶対位置を設定 */
+      top: 50%; /* 縦方向の中央に配置 */
+      right: 10px; /* 右端からの位置を設定 */
+      transform: translateY(-50%); /* 縦方向の中央に配置 */
+      font-size: 1.5em; /* アイコンの大きさを設定 */
+      color: #ff6666; /* アイコンの色を設定 */
+      pointer-events: none; /* アイコンをクリックできないようにする */
+    }
+
+    .flatpickr-calendar {
+      width: 330px !important; /* カレンダー全体の幅を少し広くする */
+      height: auto !important; /* 高さは自動調整 */
+  }
+  
+  .flatpickr-days {
+      display: grid !important;
+      grid-template-columns: repeat(7, 1fr) !important; /* 7列のグリッドレイアウト */
+  }
+  
+  .flatpickr-day {
+      line-height: 40px !important; /* 日付セルのテキストの高さを設定 */
+      width: 100% !important; /* 各日付セルの幅を100%に設定 */
+      box-sizing: border-box !important; /* ボックスのサイズを調整 */
+  }
+
+

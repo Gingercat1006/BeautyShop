@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="completion.css">
+    <title>予約完了</title>
+</head>
+<body>
+    <h1>予約完了！</h1>
+    <p>????宛に確認メールを送信しました</p>
+
+    <div id="all"></div>
+
+    <button type="button" id="next" onclick="location.href='Operation.html'">完了</button>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+        $(function(){
+            $("#all").load("All.html",function(){
+                let next = document.getElementById("next")
+                next.value = "完了"
+                next.style.display = "block"
+                next.addEventListener("click",function(){
+                    location.href = "Operation.html"
+                })
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Reservation.css">
+    <title>新規予約</title>
+</head>
+<body>
+    <div id="all"></div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+    $(function(){
+        //All.htmlの読み込み
+        $("#all").load("All.html", function() {
+            //読み込んだ後に実行
+
+            document.getElementById("next").style.display = "block"
+
+            //次へをクリックした際の処理
+            document.getElementById("next").addEventListener("click",function(){
+            let url = "Date_Select.html?";
+            let isFirstParam = true;
+            for (let check of checks) {
+                if (check.checked) {
+                    let checkDiv = document.getElementById(check.value);
+                    if (checkDiv.style.display === "inline") {
+                        // クエリパラメータとして次の画面に渡す
+                        let text = checkDiv.id;
+                        if (!isFirstParam) {
+                            url += "&";
+                        } else {
+                            isFirstParam = false;
+                        }
+                        let selects = document.getElementsByClassName("c")
+                        for(let select of selects){
+                            if(select.name == text){
+                                url += text + "=" + text + "/" + select.value;
+                            }
+                        }
+                    }
+                }
+            }
+            if(!isFirstParam){
+                location.href = url;
+            }
+        });
+        });
+    });
+    </script>
+    <h1>新規予約</h1>
+        <label class="select">
+            氏名
+            <select>
+                <option>あ 亜 080-1111-1111</option>
+                <option>い 伊 080-2222-2222</option>
+            </select>
+        </label>
+        <hr>
+        <h1>メニュー一覧</h1>
+        <label class="check" for="cut">
+            <input type="checkbox" id="cut" class="check" name="menu" value="カット"/>
+            <span class="checkmark"></span>
+            カット
+        </label><br>
+        
+        <label class="check" for="perm">
+            <input type="checkbox" id="perm" class="check" name="menu" value="パーマ" />
+            <span class="checkmark"></span>
+            パーマ
+        </label><br>
+        
+        <label class="check" for="color">
+            <input type="checkbox" id="color" class="check" name="menu" value="カラー"/>
+            <span class="checkmark"></span>
+            カラー
+        </label><br>
+        
+        <label class="check" for="shampoo">
+            <input type="checkbox" id="shampoo" class="check" name="menu" value="シャンプー"/>
+            <span class="checkmark"></span>
+            シャンプー
+        </label><br>
+        <hr>
+        <h1>スタイリスト</h1>
+            <div id="カット">
+                <label class="select">
+                    カット
+                    <select class="c" name="カット">
+                        <option>a</option>
+                        <option>b</option>
+                    </select>
+                </label>
+            </div>
+            <div id="パーマ">
+                <label class="select">
+                    パーマ
+                    <select class="c" name="パーマ">
+                        <option>a</option>
+                        <option>b</option>
+                    </select>
+                </label>
+            </div>
+            <div id="カラー">
+                <label class="select">
+                    カラー
+                    <select class="c" name="カラー">
+                        <option>a</option>
+                        <option>b</option>
+                    </select>
+                </label>
+            </div>
+            <div id="シャンプー">
+                <label class="select">
+                    シャンプー
+                    <select class="c" name="シャンプー">
+                        <option>a</option>
+                        <option>b</option>
+                    </select>
+                </label>
+            </div>
+        <hr>
+        <h1>合計金額</h1>
+        <h3 id="sum">カット1000円+パーマ1500円 = 2500円</h3>
+    <script>
+        //チェックボックスの確認
+        let checks = document.getElementsByClassName("check") // class=checkの要素が配列で返される
+        let selects = document.getElementsByClassName("c")
+        // すべてのチェックボックスが false であるかを判定するフラグ
+        let allUnchecked = 0;
+        for(let check of checks){
+            //チェックボックスをクリックしたら実行
+            check.addEventListener("click", () => {
+                if(check.checked == true){
+                    for(let select of selects){
+                        if(check.value == select.name){
+                            allUnchecked++
+                            document.getElementById(check.value).style.display = "inline"
+                        }
+                    }
+                }else{
+                    for(let select of selects){
+                        if(check.value == select.name){
+                            allUnchecked--
+                            document.getElementById(check.value).style.display = "none"
+                        }
+                    }
+                }
+
+                console.log(allUnchecked)
+                if(allUnchecked != 0){
+                    document.getElementById("next").style.pointerEvents = "auto"
+                    document.getElementById("next").style.backgroundColor = "#0a70e4d8"
+                }else{
+                    document.getElementById("next").style.pointerEvents = "none"
+                    document.getElementById("next").style.backgroundColor = "#6c7681d8"
+                }
+            });
+        }
+
+        // チェックボックスの状態をセッションストレージに保存する関数
+        function saveCheckboxState() {
+            for (let i = 0; i < checks.length; i++) {
+                sessionStorage.setItem('checkboxState' + i, checks[i].checked);
+            }
+        }
+
+        // ページ読み込み時にセッションストレージから状態を復元する
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = 0; i < checks.length; i++) {
+                let savedState = sessionStorage.getItem('checkboxState' + i);
+                if (savedState === 'true') {
+                    checks[i].checked = true;
+                    // チェックボックスがチェックされている場合は対応するメニューを表示する
+                    let checkDiv = document.getElementById(checks[i].value);
+                    if (checkDiv) {
+                        checkDiv.style.display = "inline";
+                    }
+                } else {
+                    checks[i].checked = false;
+                    // チェックボックスがチェックされていない場合は対応するメニューを非表示にする
+                    let checkDiv = document.getElementById(checks[i].value);
+                    if (checkDiv) {
+                        checkDiv.style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

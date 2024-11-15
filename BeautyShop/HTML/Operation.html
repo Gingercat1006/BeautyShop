@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Operation.css">
+    <title>操作一覧</title>
+</head>
+<body>
+    <div id="all"></div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+        $(function(){
+            $("#all").load("All.html");
+        });
+    </script>
+    <div id="main">
+        <input type="button" value="会員管理">
+        <br>
+        <input type="button" value="予約管理" onclick="location.href='Reserve.html'">
+        <br>
+        <input type="button" value="マスターメンテナンス">
+    </div>
+</body>
+</html>

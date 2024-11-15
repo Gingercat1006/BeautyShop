@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <title>ログイン画面</title>
+    <style>
+        .button {
+            background-color: #0a70e4d8;
+            border: none;
+            color: white;
+            padding: 5px 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        .button:hover{
+            background-image: linear-gradient(to right, #27acd9 0%, #b4e12b 100%);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>ログイン</h1>
+        <input type="text" placeholder="スタイリスト番号">
+        <br>
+        <input type="password" id="pass" placeholder="パスワード">
+        <br>
+        <div id="display_1">
+            <label>パスワードを表示<input type="checkbox" id="display_2"></label>
+        </div>
+        <input type="submit" value="ログイン"class = "button" onclick="location.href='Operation.html'";>
+    </div>
+    <script>
+        let element = document.getElementById("pass")
+        let element2 = document.getElementById("display_2")
+        element2.addEventListener("click",() =>{
+            if(element.type == "text"){
+                element.type = "password"
+            }else{
+                element.type = "text"
+            }
+        })
+    </script>
+</body>
+</html>

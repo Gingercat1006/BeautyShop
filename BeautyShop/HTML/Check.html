@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Reservation.css">
+    <title>最終確認</title>
+</head>
+<body>
+    <div id="all"></div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+        $(function(){
+            $("#all").load("All.html",function(){
+                let next = document.getElementById("next")
+                next.value = "確定"
+                next.style.display = "block"
+                next.style.pointerEvents = "auto"
+                next.style.backgroundColor = "#0a70e4d8"
+                next.addEventListener("click", function(){
+                    location.href = "Completion.html"
+                })
+            });
+        });
+    </script>
+    <h1>最終確認</h1>
+    氏名:あ 様 080-0000-0000
+        <hr>
+            <h1>メニュー</h1>
+            カット パーマ
+            <hr>
+        <h1>スタイリスト</h1>
+            <div id="stylist">
+                カット:a
+                パーマ:a
+            </div>
+        <hr>
+            <h1>希望日時</h1>
+            2024/6/1 16:30
+        <hr>
+        <h1>合計金額</h1>
+        <h3>カット1000円+パーマ1500円 = 2500円</h3>
+    <script>
+        let stylist = document.getElementById("stylist");
+    </script>
+</body>
+</html>

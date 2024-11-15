@@ -1,0 +1,13 @@
+p{
+    text-align: center;
+    line-height: 500px;
+    height: 50px;
+    font-size: 30px;
+}
+
+#next{
+    top:620px;
+}
+#back{
+    display: none;
+}

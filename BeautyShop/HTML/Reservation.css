@@ -1,0 +1,146 @@
+#back,#next{
+    top:680px;
+}
+#next{
+    pointer-events: none;
+    background-color: #6c7681d8;
+}
+#カット{
+    display:none
+}
+#パーマ{
+    display:none
+}
+#カラー{
+    display:none
+}
+#シャンプー{
+    display:none
+}
+
+label.check {
+    display: block;
+    position: relative;
+    padding-left: 40px; /* チェックボックス用のスペースを広げる */
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px; /* テキストのサイズを調整 */
+    color: #333; /* テキストの色を設定 */
+    transition: color 0.3s ease; /* テキスト色のトランジション */
+}
+
+/* チェックボックス自体の非表示 */
+input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    left: -9999px; /* 画面外に移動 */
+}
+
+/* チェックマークのスタイル */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    border-radius: 8px;
+    transition: all 0.3s ease; /* トランジションの追加 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* シャドウの追加 */
+}
+
+/* チェックされた時のスタイル */
+input[type="checkbox"]:checked ~ .checkmark:after {
+    content: '\2714'; /* チェックマークのUnicode */
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5); /* スケールアニメーション */
+    transition: transform 0.5s ease; /* チェックマークのトランジション */
+}
+
+/* チェックボックスのラベルにマウスが乗った時のスタイル */
+label.check:hover .checkmark {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    transform: scale(1.1) rotate(10deg); /* 拡大および回転アニメーション */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* シャドウの強化 */
+}
+
+/* チェックボックスのラベルがクリックされた時のスタイル */
+input[type="checkbox"]:checked ~ .checkmark {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+    border-radius: 50%; /* 円形に変形 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* シャドウの追加 */
+}
+
+/* チェックされた時のテキスト色変更 */
+input[type="checkbox"]:checked + label.check {
+    color: #ff5e62; /* テキスト色を変更 */
+}
+
+/* チェックマークのスタイル（アニメーションの強化） */
+input[type="checkbox"]:checked ~ .checkmark:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked ~ .checkmark:after {
+    content: '\2714'; /* チェックマークのUnicode */
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2); /* スケールアニメーション */
+    transition: transform 0.3s ease; /* チェックマークのトランジション */
+}
+
+/*プルダウンメニューのデザイン*/
+.select{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.select::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+select {
+    appearance: none;
+    min-width: 100px;
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: none;
+    border:1px solid #d0d0d0;
+    border-bottom: 2px double #d0d0d0;
+    background-color: #fff;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+}
+
+
+
